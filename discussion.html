@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>發表意見｜CivicTalk</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- 導覽列（沿用同一套設計） -->
+  <header>
+    <div class="container nav-bar">
+      <div class="brand">
+        <span>CivicTalk</span>
+        <span class="dot"></span>
+      </div>
+
+      <nav id="nav-links" class="nav-links">
+        <a href="Index.html#hero">理念</a>
+        <a href="Index.html#features">運作方式</a>
+        <a href="Index.html#cta">回首頁</a>
+      </nav>
+
+      <button id="menu-btn" class="menu-btn" aria-label="開啟選單">☰</button>
+    </div>
+  </header>
+
+  <main>
+    <section class="container form-wrap">
+      <header class="form-head">
+        <h1>針對議題發表意見</h1>
+        <p class="form-intro">
+          你的回饋會被整理成「公共意見摘要」，讓其他公民、媒體、決策單位都能看到真實影響。
+          請盡量具體：這個議題如何影響你？你覺得解法是什麼？
+        </p>
+      </header>
+
+      <form class="form-box" action="#" method="post">
+        <!-- 1. 哪個議題 -->
+        <div class="form-field">
+          <label for="topicTitle">你回應的是哪一個議題？</label>
+          <input
+            type="text"
+            id="topicTitle"
+            name="topicTitle"
+            placeholder="例如：高雄空污管制是否應該加強？"
+            required
+          />
+          <p class="hint">
+            讓我們知道要把你的意見放進哪個討論房間。
+          </p>
+        </div>
+
+        <!-- 2. 你的立場 -->
+        <div class="form-field">
+          <label for="stance">你的角度比較接近哪一邊？</label>
+          <select id="stance" name="stance" required>
+            <option value="" selected disabled>請選擇</option>
+            <option value="support">我大致支持目前的方向</option>
+            <option value="oppose">我大致反對目前的方向</option>
+            <option value="middle">我想提出折衷/修正方案</option>
+            <option value="question">我主要是在釐清 / 我還在了解</option>
+          </select>
+          <p class="hint">
+            這不是貼標籤，而是讓別人理解「你是站在哪個位置在說話」。
+          </p>
+        </div>
+
+        <!-- 3. 影響到你嗎 -->
+        <div class="form-field">
+          <label for="impact">這個議題有沒有影響到你或你身邊的人？</label>
+          <textarea
+            id="impact"
+            name="impact"
+            placeholder="例：我住在工業區附近，最近一年小孩過敏明顯變嚴重。"
+          ></textarea>
+          <p class="hint">
+            我們非常在意真實生活影響。因為政策不是理論，它會落在某些人的日常。
+          </p>
+        </div>
+
+        <!-- 4. 你建議怎麼做 -->
+        <div class="form-field">
+          <label for="proposal">你認為應該怎麼做會更好？（具體做法/配套/資源）</label>
+          <textarea
+            id="proposal"
+            name="proposal"
+            required
+            placeholder="例：我支持加強管制，但建議先讓工廠有2年緩衝期，同時補助中小企業汰換設備，避免他們直接倒閉。"
+          ></textarea>
+          <p class="hint">
+            具體方案 = 可以拿去開會的東西。這是你對公共政策的直接貢獻。
+          </p>
+        </div>
+
+        <!-- 5. 授權聲明 -->
+        <div class="form-field">
+          <label for="consent" class="check-label">
+            <input type="checkbox" id="consent" name="consent" required />
+            我同意將上述內容匿名整理成「公共意見摘要」，公開給其他公民參考。
+          </label>
+          <p class="hint">
+            我們不會公開你的姓名或個資，只會引用意見內容本身。
+          </p>
+        </div>
+
+        <!-- 送出 / 返回 -->
+        <div class="form-actions">
+          <button type="submit" class="btn-main">送出我的意見</button>
+          <a class="btn-ghost" href="Index.html#cta">回上一頁</a>
+        </div>
+      </form>
+    </section>
+  </main>
+
+  <!-- 頁尾 -->
+  <footer>
+    <div class="footer-shell">
+      <div class="container footer-top">
+        <div class="footer-brand-block">
+          <div class="footer-brand">
+            <span>CivicTalk</span>
+            <span class="dot alt"></span>
+          </div>
+          <p class="footer-desc">
+            我們不是在蒐集噴文，我們在蒐集可以拿去開會的方案。
+          </p>
+        </div>
+
+        <nav class="footer-links">
+          <a href="Index.html#hero">理念</a>
+          <a href="Index.html#features">機制</a>
+          <a href="Index.html#cta">參與測試</a>
+        </nav>
+      </div>
+
+      <div class="footer-bottom container">
+        © 2025 CivicTalk. 公民不是吵鬧的人，而是利害關係人。
+      </div>
+    </div>
+  </footer>
+
+  <!-- 手機漢堡選單 JS -->
+  <script>
+    const btn = document.getElementById('menu-btn');
+    const nav = document.getElementById('nav-links');
+
+    btn.addEventListener('click', () => {
+      nav.classList.toggle('open');
+    });
+
+    nav.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        nav.classList.remove('open');
+      });
+    });
+  </script>
+</body>
+</html>
