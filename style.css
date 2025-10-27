@@ -1,4 +1,27 @@
-/* ========== 全站基礎 ========== */
+/* =========================================
+   色票集中管理
+   ========================================= */
+:root {
+  --bg-base:        #CDB895;  /* 全站背景米色 */
+  --bg-card:        #FFFFFF;  /* 卡片 / 表單 / 浮起來的內容 */
+  --accent-main:    #4C7B78;  /* 主色：深綠藍線條 */
+  --accent-hover:   #355654;  /* 主色 hover（同色系略深） */
+  --accent-alt:     #92A083;  /* 次色：灰綠 */
+  --accent-dark:    #1E3130;  /* 最深色：footer 背景 / hero 深部 */
+  --text-main:      #1A1A1A;  /* 主要文字 */
+  --text-sub:       #4A4A4A;  /* 說明文字 */
+  --text-on-dark:   #FFFFFF;  /* 深色背景上的文字 */
+  --border-soft:    #e5e5e5;
+  --border-card:    #e5e7eb;
+  --input-border:   #cbd5e1;
+  --shadow-card:    0 .75rem 1.5rem rgb(0 0 0 / .03);
+  --shadow-card-strong: 0 1.5rem 3rem rgb(0 0 0 / .4);
+  --shadow-card-soft:   0 .75rem 1.5rem rgb(0 0 0 / .05);
+}
+
+/* =========================================
+   全站基礎
+   ========================================= */
 *, *::before, *::after {
   box-sizing: border-box;
 }
@@ -7,8 +30,8 @@ body {
   margin: 0;
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Noto Sans TC", "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   line-height: 1.5;
-  color: #1a1a1a;
-  background-color: #fafafa;
+  color: var(--text-main);
+  background-color: var(--bg-base);
 }
 
 img {
@@ -19,7 +42,7 @@ img {
 h1, h2, h3, h4 {
   line-height: 1.2;
   margin-top: 0;
-  color: #1a1a1a;
+  color: var(--text-main);
 }
 
 /* 共用容器：寬度限制 + 置中 + 內距 */
@@ -29,9 +52,11 @@ h1, h2, h3, h4 {
   padding: 2rem 1rem;
 }
 
-/* ========== 導覽列 / Header ========== */
+/* =========================================
+   導覽列 / Header
+   ========================================= */
 header {
-  background-color: #ffffff;
+  background-color: var(--bg-card);
   border-bottom: 1px solid #ddd;
 }
 
@@ -50,13 +75,14 @@ header {
   gap: .5rem;
   font-weight: 600;
   font-size: 1.125rem;
+  color: var(--text-main);
 }
 
 .dot {
   width: .6rem;
   height: .6rem;
   border-radius: 999px;
-  background: #4f46e5;
+  background: var(--accent-main);
   display: inline-block;
 }
 
@@ -67,7 +93,7 @@ header {
   position: absolute;
   top: 3.5rem;
   right: 1rem;
-  background: #fff;
+  background: var(--bg-card);
   border: 1px solid #ddd;
   border-radius: .5rem;
   box-shadow: 0 .5rem 1rem rgb(0 0 0 / .08);
@@ -78,7 +104,7 @@ header {
 
 .nav-links a {
   text-decoration: none;
-  color: #1a1a1a;
+  color: var(--text-main);
   padding: .5rem .75rem;
   border-radius: .375rem;
   font-size: .95rem;
@@ -86,8 +112,8 @@ header {
 }
 
 .nav-links a:hover {
-  background: #4f46e5;
-  color: #fff;
+  background: var(--accent-main);
+  color: var(--text-on-dark);
 }
 
 /* 手機漢堡按鈕 */
@@ -99,11 +125,12 @@ header {
   cursor: pointer;
   border-radius: .375rem;
   padding: .5rem .5rem;
+  color: var(--text-main);
 }
 
 .menu-btn:focus,
 .menu-btn:active {
-  outline: 2px solid #4f46e5;
+  outline: 2px solid var(--accent-main);
   outline-offset: 2px;
 }
 
@@ -134,7 +161,9 @@ header {
   }
 }
 
-/* ========== HERO (主視覺) ========== */
+/* =========================================
+   Hero (主視覺)
+   ========================================= */
 .hero {
   display: grid;
   gap: 2rem;
@@ -146,11 +175,12 @@ header {
   font-size: clamp(1.5rem, 1.2rem + 1vw, 2rem);
   font-weight: 700;
   margin-bottom: 1rem;
+  color: var(--text-main);
 }
 
 .hero-text p {
   font-size: 1rem;
-  color: #4a4a4a;
+  color: var(--text-sub);
   margin-bottom: 1.5rem;
   max-width: 40ch;
 }
@@ -168,8 +198,8 @@ header {
 
 /* 行動按鈕造型 */
 .btn-main {
-  background: #4f46e5;
-  color: #fff;
+  background: var(--accent-main);
+  color: var(--text-on-dark);
   font-weight: 600;
   text-decoration: none;
   padding: .75rem 1rem;
@@ -179,29 +209,30 @@ header {
   cursor: pointer;
 }
 .btn-main:hover {
-  background: #4338ca;
+  background: var(--accent-hover);
 }
 
 .btn-ghost {
   background: transparent;
-  color: #1a1a1a;
+  color: var(--text-main);
   font-weight: 500;
   text-decoration: none;
   padding: .75rem 1rem;
   border-radius: .5rem;
   font-size: .95rem;
-  border: 1px solid #1a1a1a33;
+  border: 1px solid rgb(26 26 26 / .2);
   cursor: pointer;
 }
 .btn-ghost:hover {
-  background: #1a1a1a08;
+  background: rgb(0 0 0 / .05);
 }
 
-/* 右側說明卡 (手機時會在下方或上方依順序) */
+/* 右側說明卡 */
 .hero-visual {
   border-radius: 1rem;
-  background: radial-gradient(circle at 20% 20%, #4f46e5 0%, #111827 60%);
-  color: #fff;
+  /* 從品牌主色一路漸層到深色，營造「嚴肅但冷靜的公共空間」 */
+  background: radial-gradient(circle at 20% 20%, var(--accent-main) 0%, var(--accent-dark) 60%);
+  color: var(--text-on-dark);
   padding: 2rem;
   min-height: 200px;
   display: grid;
@@ -212,12 +243,12 @@ header {
   margin: 0 0 .5rem;
   font-size: 1.125rem;
   font-weight: 600;
-  color: #fff;
+  color: var(--text-on-dark);
 }
 .hero-visual p {
   margin: 0;
   font-size: .95rem;
-  color: #d1d5db;
+  color: var(--accent-alt);
   max-width: 40ch;
 }
 
@@ -229,11 +260,13 @@ header {
   }
 }
 
-/* ========== FEATURES (特色區) ========== */
+/* =========================================
+   FEATURES (特色區)
+   ========================================= */
 .features {
-  background: #ffffff;
-  border-top: 1px solid #e5e5e5;
-  border-bottom: 1px solid #e5e5e5;
+  background: var(--bg-card);
+  border-top: 1px solid var(--border-soft);
+  border-bottom: 1px solid var(--border-soft);
   padding-top: 2rem;
   padding-bottom: 3rem;
 }
@@ -247,13 +280,13 @@ header {
 .features-head h2 {
   font-size: 1.25rem;
   font-weight: 600;
-  color: #1a1a1a;
+  color: var(--text-main);
   margin-bottom: .5rem;
 }
 
 .features-head p {
   font-size: .95rem;
-  color: #4a4a4a;
+  color: var(--text-sub);
   margin: 0;
 }
 
@@ -265,11 +298,11 @@ header {
 }
 
 .card {
-  background: #f9fafb;
-  border: 1px solid #e5e7eb;
+  background: var(--bg-base);
+  border: 1px solid var(--border-card);
   border-radius: .75rem;
   padding: 1rem 1.25rem 1.25rem;
-  box-shadow: 0 .75rem 1.5rem rgb(0 0 0 / .03);
+  box-shadow: var(--shadow-card);
   display: grid;
   gap: .5rem;
 }
@@ -277,8 +310,8 @@ header {
 .icon {
   font-size: 1.5rem;
   font-weight: 600;
-  background: #4f46e5;
-  color: #fff;
+  background: var(--accent-main);
+  color: var(--text-on-dark);
   width: 2rem;
   height: 2rem;
   border-radius: .5rem;
@@ -290,16 +323,18 @@ header {
   font-size: 1rem;
   font-weight: 600;
   margin: 0;
-  color: #1a1a1a;
+  color: var(--text-main);
 }
 
 .card p {
   font-size: .9rem;
-  color: #4a4a4a;
+  color: var(--text-sub);
   margin: 0;
 }
 
-/* ========== CTA (行動召喚) ========== */
+/* =========================================
+   CTA (行動召喚)
+   ========================================= */
 .cta {
   text-align: center;
   padding-top: 3rem;
@@ -307,11 +342,11 @@ header {
 }
 
 .cta-box {
-  background: #1a1a1a;
-  color: #fff;
+  background: var(--accent-dark);
+  color: var(--text-on-dark);
   border-radius: 1rem;
   padding: 2rem 1.5rem;
-  box-shadow: 0 1.5rem 3rem rgb(0 0 0 / .4);
+  box-shadow: var(--shadow-card-strong);
 
   max-width: 40rem;
   margin: 0 auto;
@@ -323,19 +358,21 @@ header {
   margin: 0;
   font-size: 1.25rem;
   font-weight: 600;
-  color: #fff;
+  color: var(--text-on-dark);
 }
 
 .cta-box p {
   margin: 0;
   font-size: .95rem;
-  color: #d1d5db;
+  color: var(--accent-alt);
 }
 
-/* ========== FOOTER (頁尾) ========== */
+/* =========================================
+   FOOTER (頁尾)
+   ========================================= */
 .footer-shell {
-  background-color: #0f172a;
-  color: #94a3b8;
+  background-color: var(--accent-dark);
+  color: var(--accent-alt);
   font-size: .8rem;
   padding-top: 2rem;
   padding-bottom: 2rem;
@@ -347,7 +384,7 @@ header {
 }
 
 .footer-brand {
-  color: #fff;
+  color: var(--text-on-dark);
   font-weight: 600;
   font-size: 1rem;
   display: flex;
@@ -356,12 +393,12 @@ header {
 }
 
 .dot.alt {
-  background: #38bdf8;
+  background: var(--accent-alt);
 }
 
 .footer-desc {
   margin: .5rem 0 0;
-  color: #94a3b8;
+  color: var(--accent-alt);
   font-size: .9rem;
 }
 
@@ -372,18 +409,18 @@ header {
 }
 
 .footer-links a {
-  color: #94a3b8;
+  color: var(--accent-alt);
   text-decoration: none;
 }
 .footer-links a:hover {
-  color: #fff;
+  color: var(--text-on-dark);
 }
 
 .footer-bottom {
-  border-top: 1px solid #1e293b;
+  border-top: 1px solid rgb(255 255 255 / .08);
   padding-top: 1rem;
   font-size: .75rem;
-  color: #64748b;
+  color: var(--accent-alt);
   margin-top: 1rem;
 }
 
@@ -397,8 +434,10 @@ header {
     justify-content: flex-end;
   }
 }
-/* ========== FORM PAGE (discussion.html) ========== */
 
+/* =========================================
+   FORM PAGE (discussion.html)
+   ========================================= */
 .form-wrap {
   padding-top: 2rem;
   padding-bottom: 4rem;
@@ -408,23 +447,23 @@ header {
 .form-head h1 {
   font-size: 1.25rem;
   font-weight: 600;
-  color: #1a1a1a;
+  color: var(--text-main);
   margin-bottom: .5rem;
 }
 
 .form-intro {
   font-size: .95rem;
-  color: #4a4a4a;
+  color: var(--text-sub);
   margin-top: 0;
   margin-bottom: 2rem;
   line-height: 1.5;
 }
 
 .form-box {
-  background: #fff;
-  border: 1px solid #e5e7eb;
+  background: var(--bg-card);
+  border: 1px solid var(--border-card);
   border-radius: .75rem;
-  box-shadow: 0 .75rem 1.5rem rgb(0 0 0 / .05);
+  box-shadow: var(--shadow-card-soft);
   padding: 1.5rem;
   display: grid;
   gap: 1.25rem;
@@ -438,7 +477,7 @@ header {
 label {
   font-size: .9rem;
   font-weight: 600;
-  color: #1a1a1a;
+  color: var(--text-main);
   line-height: 1.4;
 }
 
@@ -447,6 +486,7 @@ label {
   align-items: flex-start;
   gap: .5rem;
   font-weight: 600;
+  color: var(--text-main);
 }
 
 .check-label input[type="checkbox"] {
@@ -470,17 +510,17 @@ textarea {
   line-height: 1.4;
   padding: .7rem .75rem;
   border-radius: .5rem;
-  border: 1px solid #cbd5e1;
-  background: #fff;
-  color: #1a1a1a;
+  border: 1px solid var(--input-border);
+  background: var(--bg-card);
+  color: var(--text-main);
 }
 
 input[type="text"]:focus,
 select:focus,
 textarea:focus {
-  outline: 2px solid #4f46e5;
+  outline: 2px solid var(--accent-main);
   outline-offset: 2px;
-  border-color: #4f46e5;
+  border-color: var(--accent-main);
 }
 
 textarea {
