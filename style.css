@@ -229,28 +229,45 @@ header {
 
 /* 右側說明卡 */
 .hero-visual {
+  position: relative;
   border-radius: 1rem;
-  /* 從品牌主色一路漸層到深色，營造「嚴肅但冷靜的公共空間」 */
-  background: radial-gradient(circle at 20% 20%, var(--accent-main) 0%, var(--accent-dark) 60%);
+
+  /* 1) 背景主圖：就是你給的那張圖 */
+  background-image: url("IMG_0312.jpeg"); /* 如果檔名或路徑不同，這裡要同步改 */
+  background-size: cover;      /* 讓圖片撐滿整個區塊 */
+  background-position: center; /* 圖片置中顯示 */
+  background-repeat: no-repeat;
+
+  /* 2) 字放在上面時還是可讀，所以我們加一層半透明深色罩 */
+  /* 技巧：用背景色 + blend-mode */
+  background-color: rgba(30, 49, 48, 0.5); /* var(--accent-dark) 的半透明版 */
+  background-blend-mode: multiply;
+
   color: var(--text-on-dark);
+
   padding: 2rem;
   min-height: 200px;
   display: grid;
   align-content: center;
+
   box-shadow: 0 1.5rem 3rem rgb(0 0 0 / .3);
 }
+
 .hero-visual h2 {
   margin: 0 0 .5rem;
   font-size: 1.125rem;
   font-weight: 600;
   color: var(--text-on-dark);
 }
+
 .hero-visual p {
   margin: 0;
   font-size: .95rem;
-  color: var(--accent-alt);
+  line-height: 1.5;
+  color: var(--accent-alt); /* 淺灰綠，讀起來像是副標 */
   max-width: 40ch;
 }
+
 
 /* 平板以上：hero 變兩欄 */
 @media (min-width: 768px) {
