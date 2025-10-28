@@ -61,33 +61,37 @@ header {
 }
 
 .nav-bar {
-  padding-top: .75rem;
-  padding-bottom: .75rem;
+  /* 上下維持 0.75rem，高度不變，左右加空間 */
+  padding: .75rem 1.5rem;
+
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 
+
 /* 左邊品牌 */
 .brand {
   display: flex;
-  align-items: center;      /* 垂直置中圖示和文字 */
+  align-items: center;
   gap: .5rem;
   font-weight: 600;
   font-size: 1.125rem;
   color: var(--text-main);
-  line-height: 1;           /* 避免文字比圖高太多 */
+  line-height: 1;
 }
 
 /* 小logo本體 */
 .brand-logo {
-  width: 32px;
-  height: 32px;
-  border-radius: .5rem;     /* 稍微圓角，讓它有產品質感而不是生硬縮圖 */
-  object-fit: cover;        /* 不會被拉扁，維持構圖 */
-  background-color: var(--bg-base);
-  box-shadow: 0 .4rem .8rem rgb(0 0 0 / .18);
-  flex-shrink: 0;           /* 手機窄螢幕時不要被壓扁 */
+  width: 75px;
+  height: 75px;
+  object-fit: contain;      /* 不裁切，完整顯示線條圖 */
+  flex-shrink: 0;
+
+  /* 取消貼紙效果 */
+  background: transparent;
+  border-radius: 0;
+  box-shadow: none;
 }
 
 /* 文字本身分出來，未來可以單獨改字體或加副標 */
@@ -98,7 +102,6 @@ header {
   display: inline-block;
   line-height: 1.2;
 }
-
 .dot {
   width: .6rem;
   height: .6rem;
