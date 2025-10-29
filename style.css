@@ -83,8 +83,8 @@ header {
 
 /* 小logo本體 */
 .brand-logo {
-  width: 75px;
-  height: 75px;
+  width: 100px;
+  height: 100px;
   object-fit: contain;      /* 不裁切，完整顯示線條圖 */
   flex-shrink: 0;
 
@@ -580,4 +580,236 @@ textarea {
   .form-actions {
     justify-content: flex-end;
   }
+}
+/* =========================================
+   討論板佈局（discussion.html 專用）
+   ========================================= */
+
+.board-layout {
+  display: grid;
+  gap: 2rem;
+  padding-top: 2rem;
+  padding-bottom: 4rem;
+}
+
+/* 手機：單欄。平板以上：2欄（左 2fr / 右 1fr） */
+@media (min-width: 900px) {
+  .board-layout {
+    grid-template-columns: 2fr 1fr;
+  }
+}
+
+/* 左半邊：現有話題 */
+.board-existing {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.board-header .board-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--text-main);
+  margin: 0 0 .5rem;
+  line-height: 1.3;
+}
+
+.board-header .board-desc {
+  margin: 0;
+  font-size: .95rem;
+  color: var(--text-sub);
+  line-height: 1.5;
+}
+
+.topic-list {
+  display: grid;
+  gap: 1rem;
+}
+
+/* 右半邊：新增話題區 */
+.board-new {
+  display: grid;
+  gap: 1rem;
+}
+
+.board-new-head .board-new-title {
+  font-size: 1rem;
+  font-weight: 600;
+  margin: 0 0 .5rem;
+  color: var(--text-main);
+}
+
+.board-new-head .board-new-desc {
+  margin: 0 0 1rem;
+  color: var(--text-sub);
+  font-size: .9rem;
+  line-height: 1.5;
+}
+
+.board-new-form {
+  padding: 1rem 1rem 1.25rem;
+  box-shadow: var(--shadow-card-soft);
+}
+
+/* =========================================
+   議題卡片 + 留言區
+   ========================================= */
+
+.topic-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-card);
+  border-radius: .75rem;
+  box-shadow: var(--shadow-card);
+  padding: 1rem 1rem 1.25rem;
+  display: grid;
+  gap: 1rem;
+}
+
+.topic-head {
+  display: grid;
+  gap: .5rem;
+}
+
+.topic-title {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text-main);
+  line-height: 1.3;
+}
+
+.topic-meta {
+  font-size: .85rem;
+  color: var(--text-sub);
+  line-height: 1.4;
+}
+.topic-meta div + div {
+  margin-top: .25rem;
+}
+
+/* 留言區 */
+.topic-comments {
+  display: grid;
+  gap: .75rem;
+}
+
+.comments-list {
+  display: grid;
+  gap: .5rem;
+}
+
+/* 每則留言 */
+.comment-item {
+  background: var(--bg-base);
+  border: 1px solid var(--border-card);
+  border-radius: .5rem;
+  padding: .75rem .75rem .5rem;
+
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: .5rem .75rem;
+}
+
+.comment-text {
+  font-size: .9rem;
+  line-height: 1.4;
+  color: var(--text-main);
+  flex: 1;
+  min-width: 10rem;
+}
+
+.comment-del {
+  background: transparent;
+  border: 1px solid rgba(0,0,0,.25);
+  border-radius: .4rem;
+  font-size: .8rem;
+  line-height: 1.2;
+  padding: .4rem .6rem;
+  cursor: pointer;
+  color: var(--text-main);
+}
+.comment-del:hover {
+  background: rgba(0,0,0,.07);
+}
+
+/* 新增留言輸入列 */
+.comment-form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .5rem;
+  align-items: flex-start;
+}
+
+.comment-input {
+  flex: 1;
+  min-width: 10rem;
+
+  font-family: inherit;
+  font-size: .9rem;
+  line-height: 1.4;
+  padding: .6rem .7rem;
+
+  border-radius: .5rem;
+  border: 1px solid var(--input-border);
+  background: var(--bg-card);
+  color: var(--text-main);
+}
+
+.comment-input:focus {
+  outline: 2px solid var(--accent-main);
+  outline-offset: 2px;
+  border-color: var(--accent-main);
+}
+
+/* 小版送出按鈕（沿用主色系） */
+.btn-small {
+  font-size: .8rem;
+  line-height: 1.2;
+  padding: .6rem .75rem;
+  border-radius: .5rem;
+}
+
+/* =========================================
+   Header 微調（品牌靠右一點）
+   ========================================= */
+
+.nav-bar {
+  /* 之前我們說要讓整排不要黏在最左邊，所以左右多一點內距 */
+  padding: .75rem 1.5rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* 品牌 LOGO 區 */
+.brand {
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+  font-weight: 600;
+  font-size: 1.125rem;
+  color: var(--text-main);
+  line-height: 1;
+}
+
+/* 小 logo：使用透明背景線條版 */
+.brand-logo {
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+  flex-shrink: 0;
+
+  background: transparent;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.brand-name {
+  color: var(--text-main);
+  font-weight: 600;
+  font-size: 1.125rem;
+  display: inline-block;
+  line-height: 1.2;
 }

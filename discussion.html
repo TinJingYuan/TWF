@@ -3,23 +3,24 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>發表意見｜CivicTalk</title>
+  <title>公民討論區｜CivicTalk</title>
   <link rel="stylesheet" href="style.css" />
 <link rel="icon" type="image/png" href="IMG_0317.png" />
-
 </head>
 <body>
 
-  <!-- 導覽列（沿用同一套設計） -->
+  <!-- 導覽列 -->
   <header>
-<div class="brand">
-  <img
-    src="IMG_0317.png"
-    alt="CivicTalk 標誌：公共對話的雙側面線條"
-    class="brand-logo"
-  />
-  <span class="brand-name">CivicTalk</span>
-</div>
+    <div class="container nav-bar">
+      <div class="brand">
+        <img
+          src="IMG_0317.png"
+          alt="CivicTalk 標誌：公共對話的雙側面線條"
+          class="brand-logo"
+        />
+        <span class="brand-name">CivicTalk</span>
+      </div>
+
       <nav id="nav-links" class="nav-links">
         <a href="Index.html#hero">理念</a>
         <a href="Index.html#features">運作方式</a>
@@ -31,90 +32,68 @@
   </header>
 
   <main>
-    <section class="container form-wrap">
-      <header class="form-head">
-        <h1>針對議題發表意見</h1>
-        <p class="form-intro">
-          你的回饋會被整理成「公共意見摘要」，讓其他公民、媒體、決策單位都能看到真實影響。
-          請盡量具體：這個議題如何影響你？你覺得解法是什麼？
-        </p>
-      </header>
-
-      <form class="form-box" action="#" method="post">
-        <!-- 1. 哪個議題 -->
-        <div class="form-field">
-          <label for="topicTitle">你回應的是哪一個議題？</label>
-          <input
-            type="text"
-            id="topicTitle"
-            name="topicTitle"
-            placeholder="例如：高雄空污管制是否應該加強？"
-            required
-          />
-          <p class="hint">
-            讓我們知道要把你的意見放進哪個討論房間。
+    <section class="container board-layout">
+      <!-- 左邊：現有話題 + 每個話題的留言區 -->
+      <section class="board-existing">
+        <header class="board-header">
+          <h1 class="board-title">目前開放討論中的議題</h1>
+          <p class="board-desc">
+            選一個你關心的議題，在底下留言。請專注在「具體影響」與「建設性建議」。
           </p>
-        </div>
+        </header>
 
-        <!-- 2. 你的立場 -->
-        <div class="form-field">
-          <label for="stance">你的角度比較接近哪一邊？</label>
-          <select id="stance" name="stance" required>
-            <option value="" selected disabled>請選擇</option>
-            <option value="support">我大致支持目前的方向</option>
-            <option value="oppose">我大致反對目前的方向</option>
-            <option value="middle">我想提出折衷/修正方案</option>
-            <option value="question">我主要是在釐清 / 我還在了解</option>
-          </select>
-          <p class="hint">
-            這不是貼標籤，而是讓別人理解「你是站在哪個位置在說話」。
+        <div id="topicsList" class="topic-list">
+          <!-- JavaScript 會把話題卡片渲染到這裡 -->
+        </div>
+      </section>
+
+      <!-- 右邊：新增話題表單 -->
+      <aside class="board-new">
+        <header class="board-new-head">
+          <h2 class="board-new-title">我想新增一個議題</h2>
+          <p class="board-new-desc">
+            如果目前列表沒有你想講的，那就建立一個新的公共議題房間。<br />
+            新議題會立刻出現在左邊，其他人就能開始回應。
           </p>
-        </div>
+        </header>
 
-        <!-- 3. 影響到你嗎 -->
-        <div class="form-field">
-          <label for="impact">這個議題有沒有影響到你或你身邊的人？</label>
-          <textarea
-            id="impact"
-            name="impact"
-            placeholder="例：我住在工業區附近，最近一年小孩過敏明顯變嚴重。"
-          ></textarea>
-          <p class="hint">
-            我們非常在意真實生活影響。因為政策不是理論，它會落在某些人的日常。
-          </p>
-        </div>
+        <form id="newTopicForm" class="form-box board-new-form">
+          <div class="form-field">
+            <label for="newTopicTitle">議題標題</label>
+            <input
+              type="text"
+              id="newTopicTitle"
+              name="newTopicTitle"
+              placeholder="例如：市區限速要不要全面降到 30？"
+              required
+            />
+          </div>
 
-        <!-- 4. 你建議怎麼做 -->
-        <div class="form-field">
-          <label for="proposal">你認為應該怎麼做會更好？（具體做法/配套/資源）</label>
-          <textarea
-            id="proposal"
-            name="proposal"
-            required
-            placeholder="例：我支持加強管制，但建議先讓工廠有2年緩衝期，同時補助中小企業汰換設備，避免他們直接倒閉。"
-          ></textarea>
-          <p class="hint">
-            具體方案 = 可以拿去開會的東西。這是你對公共政策的直接貢獻。
-          </p>
-        </div>
+          <div class="form-field">
+            <label for="newTopicStance">你的角度比較接近哪一邊？</label>
+            <select id="newTopicStance" name="newTopicStance" required>
+              <option value="" selected disabled>請選擇</option>
+              <option value="support">我大致支持目前方向</option>
+              <option value="oppose">我大致反對目前方向</option>
+              <option value="middle">我想提出折衷 / 修正方案</option>
+              <option value="question">我還在了解，我想提出疑問</option>
+            </select>
+          </div>
 
-        <!-- 5. 授權聲明 -->
-        <div class="form-field">
-          <label for="consent" class="check-label">
-            <input type="checkbox" id="consent" name="consent" required />
-            我同意將上述內容匿名整理成「公共意見摘要」，公開給其他公民參考。
-          </label>
-          <p class="hint">
-            我們不會公開你的姓名或個資，只會引用意見內容本身。
-          </p>
-        </div>
+          <div class="form-field">
+            <label for="newTopicImpact">這個議題對你有什麼實際影響？（可選）</label>
+            <textarea
+              id="newTopicImpact"
+              name="newTopicImpact"
+              placeholder="例：我住在主幹道旁邊，深夜超速噪音問題真的很嚴重。"
+            ></textarea>
+          </div>
 
-        <!-- 送出 / 返回 -->
-        <div class="form-actions">
-          <button type="submit" class="btn-main">送出我的意見</button>
-          <a class="btn-ghost" href="Index.html#cta">回上一頁</a>
-        </div>
-      </form>
+          <div class="form-actions">
+            <button type="submit" class="btn-main">建立新議題</button>
+          </div>
+        </form>
+      </aside>
     </section>
   </main>
 
@@ -145,20 +124,256 @@
     </div>
   </footer>
 
-  <!-- 手機漢堡選單 JS -->
+  <!-- 互動邏輯：localStorage 版的小型前端資料層 -->
   <script>
-    const btn = document.getElementById('menu-btn');
-    const nav = document.getElementById('nav-links');
+    // ---------- 資料儲存結構 ----------
+    // localStorage key
+    const STORAGE_KEY = "civictalkData";
 
-    btn.addEventListener('click', () => {
-      nav.classList.toggle('open');
+    // 讀資料（如果沒有就建一個預設的測試資料）
+    function loadData() {
+      const raw = localStorage.getItem(STORAGE_KEY);
+      if (raw) {
+        try {
+          return JSON.parse(raw);
+        } catch (e) {
+          console.warn("localStorage 內容壞掉，重置");
+        }
+      }
+      // 預設先給兩個話題，方便一開頁就有東西可以測
+      const initialData = {
+        topics: [
+          {
+            id: Date.now() - 2,
+            title: "市區主要幹道是否應全面降速到 30 km/h？",
+            stance: "我支持降速，但希望分路段調整",
+            impact: "我住在主幹道旁，半夜噪音跟安全壓力很大。",
+            comments: [
+              {
+                id: Date.now() - 1,
+                text: "我覺得要先針對學校、住宅區降速，幹道可以先加強夜間稽查，而不是一刀切。",
+                ts: Date.now() - 1
+              }
+            ]
+          },
+          {
+            id: Date.now() - 3,
+            title: "高雄工業區的空污管理標準要不要再加嚴？",
+            stance: "我傾向加嚴",
+            impact: "家裡小孩這一年過敏越來越嚴重，我真的有感覺到變化。",
+            comments: []
+          }
+        ]
+      };
+      saveData(initialData);
+      return initialData;
+    }
+
+    // 存資料
+    function saveData(data) {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+    }
+
+    // ---------- DOM 參照 ----------
+    const topicsListEl = document.getElementById("topicsList");
+    const newTopicForm = document.getElementById("newTopicForm");
+
+    // ---------- Render 主程式 ----------
+    function renderTopics() {
+      const data = loadData();
+      topicsListEl.innerHTML = ""; // 清空再重建
+
+      data.topics.forEach(topic => {
+        // 建 topic 卡片
+        const card = document.createElement("article");
+        card.className = "topic-card";
+        card.setAttribute("data-topic-id", topic.id);
+
+        // 標頭區塊（議題資訊）
+        const head = document.createElement("div");
+        head.className = "topic-head";
+
+        const titleEl = document.createElement("h2");
+        titleEl.className = "topic-title";
+        titleEl.textContent = topic.title;
+
+        const metaEl = document.createElement("div");
+        metaEl.className = "topic-meta";
+        metaEl.innerHTML = `
+          <div><strong>你的角度：</strong>${topic.stance || "（未填）"}</div>
+          <div><strong>影響描述：</strong>${topic.impact || "（未填）"}</div>
+        `;
+
+        head.appendChild(titleEl);
+        head.appendChild(metaEl);
+
+        // 留言列表區
+        const commentsWrap = document.createElement("div");
+        commentsWrap.className = "topic-comments";
+
+        const commentsList = document.createElement("div");
+        commentsList.className = "comments-list";
+        commentsList.id = "comments-" + topic.id;
+
+        // 把每則留言 render
+        topic.comments.forEach(comment => {
+          const item = createCommentDOM(topic.id, comment);
+          commentsList.appendChild(item);
+        });
+
+        // 新增留言表單
+        const commentForm = document.createElement("form");
+        commentForm.className = "comment-form";
+        commentForm.setAttribute("data-topic-id", topic.id);
+
+        const input = document.createElement("input");
+        input.type = "text";
+        input.className = "comment-input";
+        input.required = true;
+        input.placeholder = "留下你的具體建議或影響...";
+
+        const submitBtn = document.createElement("button");
+        submitBtn.type = "submit";
+        submitBtn.className = "btn-main btn-small";
+        submitBtn.textContent = "送出";
+
+        commentForm.appendChild(input);
+        commentForm.appendChild(submitBtn);
+
+        commentsWrap.appendChild(commentsList);
+        commentsWrap.appendChild(commentForm);
+
+        // 最後把所有東西丟進卡片
+        card.appendChild(head);
+        card.appendChild(commentsWrap);
+
+        // 卡片加入畫面
+        topicsListEl.appendChild(card);
+      });
+    }
+
+    // 幫某則留言建立對應的 DOM 節點
+    function createCommentDOM(topicId, comment) {
+      const row = document.createElement("div");
+      row.className = "comment-item";
+      row.setAttribute("data-comment-id", comment.id);
+
+      const text = document.createElement("div");
+      text.className = "comment-text";
+      text.textContent = comment.text;
+
+      const delBtn = document.createElement("button");
+      delBtn.className = "comment-del";
+      delBtn.textContent = "刪除";
+      delBtn.setAttribute("data-topic-id", topicId);
+      delBtn.setAttribute("data-comment-id", comment.id);
+
+      row.appendChild(text);
+      row.appendChild(delBtn);
+
+      return row;
+    }
+
+    // ---------- 新增話題 ----------
+    newTopicForm.addEventListener("submit", (e) => {
+      e.preventDefault();
+      const data = loadData();
+
+      const title = document.getElementById("newTopicTitle").value.trim();
+      const stanceSel = document.getElementById("newTopicStance");
+      const stanceText = stanceSel.options[stanceSel.selectedIndex].textContent.trim();
+      const impact = document.getElementById("newTopicImpact").value.trim();
+
+      if (!title || !stanceSel.value) {
+        return; // 基本防呆
+      }
+
+      const newTopic = {
+        id: Date.now(),
+        title,
+        stance: stanceText,
+        impact,
+        comments: []
+      };
+
+      data.topics.unshift(newTopic); // 新的放最上面
+      saveData(data);
+
+      // 清表單
+      newTopicForm.reset();
+
+      // 重新 render
+      renderTopics();
     });
 
-    nav.querySelectorAll('a').forEach(link => {
-      link.addEventListener('click', () => {
-        nav.classList.remove('open');
+    // ---------- 新增留言（針對既有話題） ----------
+    // 用事件委派監聽所有 .comment-form
+    document.addEventListener("submit", function(e) {
+      if (e.target.matches(".comment-form")) {
+        e.preventDefault();
+
+        const form = e.target;
+        const topicId = form.getAttribute("data-topic-id");
+        const inputEl = form.querySelector(".comment-input");
+        const text = inputEl.value.trim();
+        if (!text) return;
+
+        const data = loadData();
+        const topic = data.topics.find(t => String(t.id) === String(topicId));
+        if (!topic) return;
+
+        const newComment = {
+          id: Date.now(),
+          text,
+          ts: Date.now()
+        };
+
+        topic.comments.push(newComment);
+        saveData(data);
+
+        // 清輸入框
+        inputEl.value = "";
+
+        // 重新 render 該 topic 的留言列表（為了保持簡單，我們整頁重刷）
+        renderTopics();
+      }
+    });
+
+    // ---------- 刪除留言 ----------
+    // 用事件委派監聽所有 .comment-del
+    document.addEventListener("click", function(e) {
+      if (e.target.matches(".comment-del")) {
+        const btn = e.target;
+        const topicId = btn.getAttribute("data-topic-id");
+        const commentId = btn.getAttribute("data-comment-id");
+
+        const data = loadData();
+        const topic = data.topics.find(t => String(t.id) === String(topicId));
+        if (!topic) return;
+
+        topic.comments = topic.comments.filter(
+          c => String(c.id) !== String(commentId)
+        );
+        saveData(data);
+
+        renderTopics();
+      }
+    });
+
+    // ---------- 手機漢堡選單 ----------
+    const menuBtn = document.getElementById("menu-btn");
+    const navLinks = document.getElementById("nav-links");
+    menuBtn.addEventListener("click", () => {
+      navLinks.classList.toggle("open");
+    });
+    navLinks.querySelectorAll("a").forEach(link => {
+      link.addEventListener("click", () => {
+        navLinks.classList.remove("open");
       });
     });
+
+    // ---------- 初次載入 ----------
+    renderTopics();
   </script>
 </body>
 </html>
